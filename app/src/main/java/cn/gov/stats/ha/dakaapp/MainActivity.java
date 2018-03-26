@@ -22,9 +22,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        id = intent.getStringExtra("id1");
-        url = "http://192.168.1.101:8080/tjjdaka/DakaServlert";
+//        Intent intent = getIntent();
+//        id = intent.getStringExtra("id1");
+//        url = "http://192.168.1.101:8080/tjjdaka/DakaServlert";
     }
 
     Handler handler = new Handler(){
@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     bundle = msg.getData();
                     String result = bundle.getString("result");
                     try {
-                        if (result.equals("succ")) {
+                        if (result.equals("success")) {
                             Toast.makeText(MainActivity.this,"打卡成功！",Toast.LENGTH_SHORT).show();
                         }
                     }catch (NullPointerException e){
@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpDaka.DakaByPost("18538721898","morcome");
+                        String result = HttpLink.DakaByPost("admin","morcome");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
@@ -73,7 +73,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpDaka.DakaByPost("18538721898","morleave");
+                        String result = HttpLink.DakaByPost("admin","morleave");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
@@ -87,7 +87,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    String result = HttpDaka.DakaByPost("18538721898","aftcome");
+                    String result = HttpLink.DakaByPost("admin","aftcome");
                     Bundle bundle = new Bundle();
                     bundle.putString("result",result);
                     Message message = new Message();
@@ -101,7 +101,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpDaka.DakaByPost("18538721898","aftleave");
+                        String result = HttpLink.DakaByPost("admin","aftleave");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();

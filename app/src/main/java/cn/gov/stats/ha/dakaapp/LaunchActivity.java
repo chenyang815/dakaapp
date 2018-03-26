@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 
 public class LaunchActivity extends Activity implements View.OnClickListener{
-    private static final int LOGIN_JUDGE = 1;
     private EditText mAccount;
     private EditText mPassword;
     private Button mLogin;
-    private final static int REGISTER_JUDGE = 1;
+
+    private static final int LOGIN_JUDGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,9 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                             Intent intent = new Intent(LaunchActivity.this,MainActivity.class);
                             startActivity(intent);
                         }
+                        else {
+                            Toast.makeText(LaunchActivity.this,"登陆失败，密码错误!",Toast.LENGTH_SHORT).show();
+                        }
                     }catch (NullPointerException e){
                         e.printStackTrace();
                     }
@@ -67,7 +70,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                     @Override
                     public void run() {
                         //使用下面类里的函数，连接servlet，返回一个result，使用handler处理这个result
-                        String result = HttpLogin.LoginByPost(mAccount.getText().toString(),mPassword.getText().toString());
+                        String result = HttpLink.LoginByPost(mAccount.getText().toString(),mPassword.getText().toString());
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
