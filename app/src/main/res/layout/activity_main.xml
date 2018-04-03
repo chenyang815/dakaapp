@@ -31,9 +31,5 @@
         android:layout_height="wrap_content"
         android:text="下午下班" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

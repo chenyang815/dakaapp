@@ -73,7 +73,7 @@ public class HttpLink {
         return result;
     }
     public static String DakaByPost(String phone,String tag){
-        String address = "http://10.41.5.73:8080/tjjdaka/DakaServlet";
+        String address = "http://10.41.5.73:8080/tjjdaka/MainServlet";
         String result = "";
 
         try{

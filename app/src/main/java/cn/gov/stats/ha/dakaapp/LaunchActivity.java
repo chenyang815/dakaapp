@@ -42,10 +42,12 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                     Bundle bundle = new Bundle();
                     bundle = msg.getData();
                     String result = bundle.getString("result");
+                    String phone = bundle.getString("phone");
                     try {
                         if (result.equals("success")) {
                             Toast.makeText(LaunchActivity.this,"登录成功！",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LaunchActivity.this,MainActivity.class);
+                            intent.putExtra("phone",phone);
                             startActivity(intent);
                         }
                         else {
@@ -70,9 +72,13 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                     @Override
                     public void run() {
                         //使用下面类里的函数，连接servlet，返回一个result，使用handler处理这个result
-                        String result = HttpLink.LoginByPost(mAccount.getText().toString(),mPassword.getText().toString());
+                        final String phone = mAccount.getText().toString();
+                        final String password = mPassword.getText().toString();
+
+                        String result = HttpLink.LoginByPost(phone,password);
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
+                        bundle.putString("phone",phone);
                         Message message = new Message();
                         message.setData(bundle);
                         message.what = LOGIN_JUDGE;
@@ -82,16 +88,6 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
             }
             break;
         }
-//        final String id = mAccount.getText().toString();
-//        final String password = mPassword.getText().toString();
-//
-//        if(id.equals("18538721898")&password.equals("123456")){
-//            Intent intent = new Intent(LaunchActivity.this,MainActivity.class);
-//            intent.putExtra("id1",id);
-//            startActivity(intent);
-//        }else {
-//            Toast.makeText(LaunchActivity.this,"登陆失败，密码错误",Toast.LENGTH_SHORT).show();
-//        }
 
     }
 }
