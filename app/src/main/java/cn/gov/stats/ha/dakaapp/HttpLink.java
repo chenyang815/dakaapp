@@ -16,7 +16,7 @@ import java.net.URLEncoder;
 public class HttpLink {
 
     public static String LoginByPost(String phone,String password){
-        String address = "http://10.41.5.73:8080/tjjdaka/LoginServlet";
+        String address = "http://192.168.8.200:8080/tjjdaka/LoginServlet";
         String result = "";
         try{
             URL url = new URL(address);//初始化URL
@@ -73,7 +73,7 @@ public class HttpLink {
         return result;
     }
     public static String DakaByPost(String phone,String tag){
-        String address = "http://10.41.5.73:8080/tjjdaka/MainServlet";
+        String address = "http://192.168.8.200:8080/tjjdaka/MainServlet";
         String result = "";
 
         try{
