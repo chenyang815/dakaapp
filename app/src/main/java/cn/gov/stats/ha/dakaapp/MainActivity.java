@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,10 +15,11 @@ import java.net.URL;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
-    private Button morCome,morLeave,aftCome,aftLeave;
+    private Button morCome,morLeave,aftCome,aftLeave,dakalog;
 
     private static final int DAKASUCC  = 1;
-    private String phone;
+    private static final int DAKALOG  = 2;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +30,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
         morLeave = (Button)findViewById(R.id.morleave);
         aftCome = (Button)findViewById(R.id.aftcome);
         aftLeave = (Button)findViewById(R.id.aftleave);
+        dakalog = (Button)findViewById(R.id.dakalog);
 
         morCome.setOnClickListener(this);
         morLeave.setOnClickListener(this);
         aftCome.setOnClickListener(this);
         aftLeave.setOnClickListener(this);
+        dakalog.setOnClickListener(this);
 
         Intent intent = getIntent();
-        phone = intent.getStringExtra("phone");
+        uid = intent.getStringExtra("uid");
     }
 
     Handler handler = new Handler(){
@@ -56,6 +60,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     }
                 }
                 break;
+                case DAKALOG:{
+                    Bundle bundle = new Bundle();
+                    bundle = msg.getData();
+                    String result = bundle.getString("result");
+
+                    Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+                    Log.d("json", result);
+
+                }
+                break;
             }
         }
     };
@@ -70,7 +84,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpLink.DakaByPost(phone,"morcome");
+                        String result = HttpLink.dakaByPost(uid,"上班");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
@@ -84,7 +98,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpLink.DakaByPost(phone,"morleave");
+                        String result = HttpLink.dakaByPost(uid,"morleave");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
@@ -98,7 +112,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    String result = HttpLink.DakaByPost(phone,"aftcome");
+                    String result = HttpLink.dakaByPost(uid,"aftcome");
                     Bundle bundle = new Bundle();
                     bundle.putString("result",result);
                     Message message = new Message();
@@ -112,12 +126,26 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpLink.DakaByPost(phone,"aftleave");
+                        String result = HttpLink.dakaByPost(uid,"aftleave");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
                         message.setData(bundle);
                         message.what = DAKASUCC;
+                        handler.sendMessage(message);
+                    }
+                }).start();
+                break;
+            case R.id.dakalog:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String result = HttpLink.listByUid(uid);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("result",result);
+                        Message message = new Message();
+                        message.setData(bundle);
+                        message.what = DAKALOG;
                         handler.sendMessage(message);
                     }
                 }).start();

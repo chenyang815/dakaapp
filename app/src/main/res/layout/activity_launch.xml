@@ -58,6 +58,23 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/remember_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记住账号" />
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/remember_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记住密码" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/login"
