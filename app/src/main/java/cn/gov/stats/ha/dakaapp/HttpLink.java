@@ -17,8 +17,10 @@ import java.net.URLEncoder;
 
 public class HttpLink {
 
+    private static String headAddress = "http://192.168.8.200:8090/";
+
     public static String loginByPost(String uid,String password){
-        String address = "http://192.168.8.200:8090/login";
+        String address = headAddress+"login";
         String result = "";
         try{
             URL url = new URL(address);//初始化URL
@@ -75,7 +77,7 @@ public class HttpLink {
         return result;
     }
     public static String dakaByPost(String uid,String tag){
-        String address = "http://192.168.8.200:8090/daka";
+        String address = headAddress+"daka";
         String result = "";
 
         try{
@@ -135,7 +137,7 @@ public class HttpLink {
     }
 
     public static String listByUid(String phone){
-        String address = "http://192.168.8.200:8090/listbyuid";
+        String address = headAddress+"listbyuid";
         String result = "";
 
         try{

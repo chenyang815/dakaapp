@@ -90,6 +90,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                             Toast.makeText(LaunchActivity.this,"登录成功！",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LaunchActivity.this,MainActivity.class);
                             intent.putExtra("uid",uid);
+                            intent.putExtra("password",password);
                             startActivity(intent);
                         }
                         else if(result.equals("fail")){
