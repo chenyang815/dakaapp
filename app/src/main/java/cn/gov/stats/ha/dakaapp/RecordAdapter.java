@@ -54,8 +54,8 @@ public class RecordAdapter extends BaseAdapter {
              viewHolder = (ViewHolder)view.getTag();
          }
          viewHolder.itemIcon.setImageResource(R.mipmap.ic_launcher);
-         viewHolder.itemTag.setText(mList.get(i).tag);
-         viewHolder.itemDate.setText(mList.get(i).date);
+         viewHolder.itemTag.setText(mList.get(i).getTag());
+         viewHolder.itemDate.setText(mList.get(i).getDate());
         return view;
     }
 

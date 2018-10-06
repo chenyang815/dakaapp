@@ -65,9 +65,12 @@ public class RecordActivity extends Activity {
                 String date1 = jsonObject.getString("date");
                 String date = utcToDate(date1);
                 recordItemBean = new RecordItemBean();
-                recordItemBean.tag = jsonObject.getString("tag");
-                recordItemBean.date = date;
-                recordItemBean.inRange = jsonObject.getString("inRange");
+//                recordItemBean.tag = jsonObject.getString("tag");
+//                recordItemBean.date = date;
+//                recordItemBean.inRange = jsonObject.getString("inRange");
+                recordItemBean.setTag(jsonObject.getString("tag"));
+                recordItemBean.setInRange(jsonObject.getString("inRange"));
+                recordItemBean.setDate(date);
                 recordItemBeanList.add(recordItemBean);
             }
         } catch (JSONException e) {
