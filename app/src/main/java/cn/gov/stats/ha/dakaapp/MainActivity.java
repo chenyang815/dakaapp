@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpLink.dakaByPost(uid,"上午上班");
+                        String result = HttpLink.dakaByPost(uid,"上午-上班");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
@@ -89,7 +89,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpLink.dakaByPost(uid,"上午下班");
+                        String result = HttpLink.dakaByPost(uid,"上午-下班");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    String result = HttpLink.dakaByPost(uid,"下午上班");
+                    String result = HttpLink.dakaByPost(uid,"下午-上班");
                     Bundle bundle = new Bundle();
                     bundle.putString("result",result);
                     Message message = new Message();
@@ -117,7 +117,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String result = HttpLink.dakaByPost(uid,"下午下班");
+                        String result = HttpLink.dakaByPost(uid,"下午-下班");
                         Bundle bundle = new Bundle();
                         bundle.putString("result",result);
                         Message message = new Message();
