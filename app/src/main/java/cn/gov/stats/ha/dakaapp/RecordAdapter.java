@@ -1,6 +1,5 @@
 package cn.gov.stats.ha.dakaapp;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ public class RecordAdapter extends BaseAdapter {
     private List<RecordItemBean> mList;
     private LayoutInflater mInflater;
 
-    public RecordAdapter(Context context,List<RecordItemBean> list){
+    public RecordAdapter(RecordActivity context, List<RecordItemBean> list){
         mList = list;
         mInflater = LayoutInflater.from(context);
 
@@ -53,7 +52,14 @@ public class RecordAdapter extends BaseAdapter {
          }else {
              viewHolder = (ViewHolder)view.getTag();
          }
-         viewHolder.itemIcon.setImageResource(R.mipmap.ic_launcher);
+         switch (mList.get(i).getInRange()){
+             case "YES":
+                 viewHolder.itemIcon.setImageResource(R.mipmap.blue);
+                 break;
+             case "NO":
+                 viewHolder.itemIcon.setImageResource(R.mipmap.red);
+                 break;
+         }
          viewHolder.itemTag.setText(mList.get(i).getTag());
          viewHolder.itemDate.setText(mList.get(i).getDate());
         return view;

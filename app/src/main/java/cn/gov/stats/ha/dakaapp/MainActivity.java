@@ -10,8 +10,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.net.URL;
-
 public class MainActivity extends Activity implements View.OnClickListener{
 
     private Button morCome,morLeave,aftCome,aftLeave;
@@ -69,7 +67,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()){
             case R.id.morcome:
                 new Thread(new Runnable() {
@@ -143,4 +140,5 @@ public class MainActivity extends Activity implements View.OnClickListener{
         }
 
     }
+
 }

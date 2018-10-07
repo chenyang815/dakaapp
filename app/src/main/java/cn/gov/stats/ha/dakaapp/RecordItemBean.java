@@ -5,9 +5,9 @@ package cn.gov.stats.ha.dakaapp;
  */
 
 public class RecordItemBean {
-    public String tag;
-    public String date;
-    public String inRange;
+    private String tag;
+    private String date;
+    private String inRange;
 
     public String getTag() {
         return tag;
