@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bizhi4"
     tools:context="cn.gov.stats.ha.dakaapp.MainActivity">
 
     <include layout="@layout/topmain" />
@@ -12,33 +13,50 @@
     <Button
         android:id="@+id/morcome"
         android:layout_marginTop="60dp"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="上午-上班" />
+        android:text="上午-上班"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@drawable/btn_shape"
+        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/morleave"
-        android:layout_marginTop="10dp"
-        android:layout_width="200dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="上午-下班" />
+        android:text="上午-下班"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@drawable/btn_shape"
+        android:textSize="25sp"/>
+
 
     <Button
         android:id="@+id/aftcome"
-        android:layout_marginTop="10dp"
-        android:layout_width="200dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="下午-上班" />
+        android:text="下午-上班"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@drawable/btn_shape"
+        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/aftleave"
-        android:layout_marginTop="10dp"
-        android:layout_width="200dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="下午-下班" />
+        android:text="下午-下班"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@drawable/btn_shape"
+        android:textSize="25sp"/>
 
 </LinearLayout>

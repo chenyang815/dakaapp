@@ -11,6 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -79,11 +85,31 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:text="登录"
+        android:text="登 录"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@drawable/btn_shape"
         android:layout_gravity="center"
-        android:textSize="15dp" />
+        android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/about"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_about" />
+
+    </LinearLayout>
 
 </LinearLayout>

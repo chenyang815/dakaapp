@@ -31,6 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mSettings = (Button)findViewById(R.id.settings);
         mRecord = (Button)findViewById(R.id.record);
 
+
         morCome.setOnClickListener(this);
         morLeave.setOnClickListener(this);
         aftCome.setOnClickListener(this);

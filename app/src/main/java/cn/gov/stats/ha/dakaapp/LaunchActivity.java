@@ -20,7 +20,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
 
     private EditText mAccount;
     private EditText mPassword;
-    private Button mLogin;
+    private Button mLogin,mAbout;
     private CheckBox rememberAccount;
     private CheckBox rememberPassword;
 
@@ -35,6 +35,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
         mAccount = (EditText) findViewById(R.id.account);
         mPassword = (EditText)findViewById(R.id.password);
         mLogin = (Button)findViewById(R.id.login);
+        mAbout = (Button)findViewById(R.id.about);
         rememberAccount = (CheckBox)findViewById(R.id.remember_account);
         rememberPassword = (CheckBox)findViewById(R.id.remember_password);
 
@@ -42,6 +43,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
         boolean isRemenberPassword=preferences.getBoolean("remember_password",false);
 
         mLogin.setOnClickListener(this);
+        mAbout.setOnClickListener(this);
 
         if(isRemenberAccount){
             String remuid=preferences.getString("remuid","");
@@ -130,6 +132,11 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                         handler.sendMessage(message);
                     }
                 }).start();
+            }
+            break;
+            case R.id.about: {
+                Intent intent1 = new Intent(LaunchActivity.this, AboutActivity.class);
+                startActivity(intent1);
             }
             break;
         }
