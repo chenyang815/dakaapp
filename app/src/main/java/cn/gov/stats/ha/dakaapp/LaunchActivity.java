@@ -45,6 +45,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
         mLogin.setOnClickListener(this);
         mAbout.setOnClickListener(this);
 
+        /*勾选记住账号密码后的操作*/
         if(isRemenberAccount){
             String remuid=preferences.getString("remuid","");
             mAccount.setText(remuid);
@@ -74,6 +75,7 @@ public class LaunchActivity extends Activity implements View.OnClickListener{
                     try {
                         if (result.equals("success")) {
 
+                            /*记住账号和密码*/
                             editor = preferences.edit();
                             if(rememberAccount.isChecked()){
                                 editor.putBoolean("remember_account",true);

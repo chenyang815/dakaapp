@@ -37,17 +37,23 @@ public class RecordActivity extends Activity {
         uid = intent.getStringExtra("uid");
         password = intent.getStringExtra("password");
 
+        /*调用MyAsyncTask()实现异步加载*/
         new MyAsyncTask().execute(uid);
     }
 
-
+    /**
+     * Params: 这个泛型指定的是我们传递给异步任务执行时的参数的类型
+     * Progress: 这个泛型指定的是我们的异步任务在执行的时候将执行的进度返回给UI线程的参数的类型
+     * Result: 这个泛型指定的异步任务执行完后返回给UI线程的结果的类型
+     */
     class MyAsyncTask extends AsyncTask<String,Void,List<RecordItemBean>>{
 
+        /* 自增字符串，用strings[0]即可取出new MyAsyncTask().execute()里面传入的第一个字符串，1取出第二个*/
         @Override
         protected List<RecordItemBean> doInBackground(String... strings) {
             return getJsonData(strings[0]);
         }
-
+        /* 传入的参数为oInBackground返回的结果，返回结果给UI线程*/
         @Override
         protected void onPostExecute(List<RecordItemBean> list) {
             super.onPostExecute(list);
@@ -58,6 +64,7 @@ public class RecordActivity extends Activity {
         }
     }
 
+    /*从后台取出json数据，解析，并传给实体类*/
     private List<RecordItemBean> getJsonData(String uid){
         String jsonString = HttpLink.listByUid(uid);
 
@@ -68,6 +75,7 @@ public class RecordActivity extends Activity {
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject jsonObject =jsonArray.getJSONObject(i);
                 String date1 = jsonObject.getString("date");
+                /*把取出的UTC时间信息转换成带时区的信息*/
                 String date = utcToDate(date1);
 
                 recordItemBean = new RecordItemBean();
@@ -83,14 +91,16 @@ public class RecordActivity extends Activity {
         return recordItemBeanList;
     }
 
+    /*把取出的UTC时间信息转换成带时区的信息*/
     private String utcToDate(String date1) {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS+SSSS");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日 HH点mm分");
-
+        /*这里多转换了一次，为了将String类型的时间信息传给getWeek*/
         SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd");
 
         Date result_date;
         Long result_time = null;
+        /*将String类型的UTC时间转换成time*/
         try {
             sdf1.setTimeZone(TimeZone.getTimeZone("GMT00:00"));
             result_date = sdf1.parse(date1);
@@ -108,6 +118,7 @@ public class RecordActivity extends Activity {
         return final_date+week;
     }
 
+    /*获取此时间是星期几*/
     private String getWeek(String time) {
         String week = "  ";
         SimpleDateFormat sdf4 = new SimpleDateFormat("yyyy-MM-dd");

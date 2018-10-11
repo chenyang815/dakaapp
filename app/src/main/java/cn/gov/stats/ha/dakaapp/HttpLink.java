@@ -17,6 +17,7 @@ import java.net.URLEncoder;
 
 public class HttpLink {
 
+    /*服务器地址和端口号，换后台环境从这里改下*/
     private static String headAddress = "http://192.168.8.200:8090/";
 
     public static String loginByPost(String uid,String password){

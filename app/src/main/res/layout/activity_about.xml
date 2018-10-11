@@ -30,7 +30,7 @@
         android:paddingTop="10dp"
         android:textSize="17sp"
         android:text="2.打卡时间范围为：
-上午上班7:40-8:20，上午下班11:30-12:10，下午上班14:10-14:50，下午下班17:10-17:50，
+上午上班7:40-8:20，上午下班11:30-12:20，下午上班14:10-14:50，下午下班17:10-17:50，
 不在此范围内的打卡会提示不在规定时段" />
     <TextView
         android:layout_width="match_parent"
